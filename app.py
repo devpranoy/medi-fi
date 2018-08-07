@@ -1,26 +1,11 @@
 from flask import Flask ,render_template, flash, redirect, url_for, session, request, logging
 
-from functools import wraps
+
 import dbquery
 
 app = Flask(__name__)
-def is_logged_in(f):	# Function for implementing security and redirection
-	@wraps(f)
-	def wrap(*args,**kwargs):
-		if 'logged_in' in session:
-			return f(*args, **kwargs)
-		else:
-			flash('Unauthorised, Please Login')
-			return redirect(url_for('login'))
-	return wrap	# A wrap is a concept that is used to check for authorisation of a request
-
-
-
-
-
 
 @app.route('/dashboard',methods=['GET','POST'])
-@is_logged_in	
 def dashboard():
 	sql="SELECT * FROM TOILETS WHERE USERID = '%s'"%(session['userid'])
 	people=dbquery.fetchall(sql)
