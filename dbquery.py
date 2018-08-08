@@ -20,7 +20,7 @@ def fetchall(sql):   #function that executes a query and returns its output/ rea
 
 def fetchone(sql):   #function that executes a query and returns its output/ read data from table
     sql = str(sql)
-    conn = psycopg2.connect(database = "d3s7cs38jotj0a", user = "wzlgzdgpdtrmcq", password = "9bb2c0c2e168a8debd55955330e691bac669e332d2c0fb403162c066b2b5a986", host = "ec2-54-217-217-194.eu-west-1.compute.amazonaws.com", port = "5432")
+    conn = psycopg2.connect(database = "ddb5e18sfuevd6", user = "yshqknwdqhxmrw", password = "a74c3ed4c7d2f55df2425cc4dae95b35d16b46cdac0f978fd5141d7069823c87", host = "ec2-54-217-235-159.eu-west-1.compute.amazonaws.com", port = "5432")
     cur = conn.cursor()
     cur.execute(sql)
     info = cur.fetchone()
@@ -28,7 +28,7 @@ def fetchone(sql):   #function that executes a query and returns its output/ rea
     return info
 
 def inserttodb(sql):    #function to write data to table
-    conn = psycopg2.connect(database = "d3s7cs38jotj0a", user = "wzlgzdgpdtrmcq", password = "9bb2c0c2e168a8debd55955330e691bac669e332d2c0fb403162c066b2b5a986", host = "ec2-54-217-217-194.eu-west-1.compute.amazonaws.com", port = "5432")
+    conn = psycopg2.connect(database = "ddb5e18sfuevd6", user = "yshqknwdqhxmrw", password = "a74c3ed4c7d2f55df2425cc4dae95b35d16b46cdac0f978fd5141d7069823c87", host = "ec2-54-217-235-159.eu-west-1.compute.amazonaws.com", port = "5432")
     cur = conn.cursor()
     cur.execute(sql)
     conn.commit()
