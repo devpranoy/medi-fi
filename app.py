@@ -97,9 +97,9 @@ def signup():
 @is_logged_in						#Can only be accessed if logged in
 def nurse_dash():
 	#usr=session['userno']	#Recieving the userid for db manipulation from the initilised session
-	#sql="SELECT * FROM PROJECTS WHERE USERID = %s"%(usr)
-	#projects=dbquery.fetchall(sql)
-	return render_template('nurse_dash.html')
+	sql="SELECT * FROM patient WHERE nurseid = '%s'"%(session['id'])
+	info=dbquery.fetchall(sql)
+	return render_template('nurse_dash.html',info=info)
 
 
 @app.route('/doctor_dash',methods=['GET','POST'])
@@ -118,10 +118,52 @@ def patient_dash():
 	#projects=dbquery.fetchall(sql)
 	return render_template('patient_dash.html')
 
+@app.route('/profile',methods=['GET','POST'])
+@is_logged_in						#Can only be accessed if logged in
+def profile():
+	#usr=session['userno']	#Recieving the userid for db manipulation from the initilised session
+	#sql="SELECT * FROM PROJECTS WHERE USERID = %s"%(usr)
+	#projects=dbquery.fetchall(sql)
+	return render_template('profile.html')
+
+#========================== Tools =============================
+@app.route('/register_patient',methods=['GET','POST'])
+@is_logged_in						#Can only be accessed if logged in
+def register_patient():
+	if request.method== 'POST':
+		name = request.form['name']
+		age = request.form['age']
+		blood = request.form['bloodgroup']
+		weight = request.form['weight']
+		height = request.form['height']
+		email = request.form['email']
+		gender = request.form['gender']
+		phno = request.form['phno']
+		issue = request.form['issue']
+		
+		sql="INSERT INTO patient(nurseid,name,age,blood,weight,height,email,phno,gender,issue) VALUES('%s','%s' ,'%s','%s','%s','%s' ,'%s','%s','%s','%s')"%(session['id'],name,age,blood,weight,height,email,phno,gender,issue)
+		dbquery.inserttodb(sql)	#connecting to db model
+		message="Patient Registration Successful"
+		return render_template('register_patient.html',message=message)
+	return render_template('register_patient.html')
+@app.route('/medicine_data',methods=['GET','POST'])
+@is_logged_in						#Can only be accessed if logged in
+def medicine_data():
+	if request.method== 'POST':
+		name = request.form['medicinename']
+		disease = request.form['disease']
+		cost = request.form['cost']
+		
+		sql="INSERT INTO medicine(userid,medicine,disease,cost) VALUES('%s','%s' ,'%s','%s')"%(session['id'],name,disease,cost)
+		dbquery.inserttodb(sql)	#connecting to db model
+		message="Medicine Added to Database"
+		return render_template('medicine_data.html',message=message)
+	return render_template('medicine_data.html')
+
 @app.route('/', methods=['GET','POST'])
 def index():
 	return render_template('index.html')
 
 if __name__=='__main__':
 	app.secret_key='secret123' #for flash messaging
-	app.run(threaded=True,host="localhost",port=800) #Debugger is set to 1 for testing and overriding the default port to http port
+	app.run(threaded=True,host="0.0.0.0",port=80,debug=True) #Debugger is set to 1 for testing and overriding the default port to http port

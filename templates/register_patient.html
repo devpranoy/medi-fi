@@ -30,7 +30,7 @@
 			<header class="header header-center undefined">
 				<div class="container-fluid">
 					<!-- Logos-->
-					<div class="inner-header"><a class="inner-brand" href="index.html"><img class="brand-dark" src="assets/images/logo.png" width="77px" alt=""><img class="brand-light" src="assets/images/logo-light.png" width="77px" alt="">
+					<div class="inner-header"><a class="inner-brand" href="index.html"><img class="brand-dark" src="../static/assets/images/logo.png" width="77px" alt=""><img class="brand-light" src="../static/assets/images/logo-light.png" width="77px" alt="">
 							<!-- Or simple text-->
 							<!-- Core--></a></div>
 					<!-- Navigation-->
@@ -81,7 +81,7 @@
 					<div class="container">
 						<div class="row-page-title">
 							<div class="page-title-captions">
-								<h1 class="h5">Nurse Dashboard</h1>
+								<h1 class="h5"><a href="nurse_dash">Nurse Dashboard</a></h1>
 							</div>
 							<div class="page-title-secondary">
 								<ol class="breadcrumb">
@@ -99,34 +99,102 @@
 						<div class="row">
 							<!-- Content-->
 							<div class="col-lg-8 order-lg-2">
-								
-									{% for infos in info %}
-									
-								  
-				
-							   
 
 								<!-- Post-->
 								<article class="post">
 									<div class="post-wrapper">
 										<div class="post-header">
-											<h2 class="post-title"><a href="blog-single.html">{{infos[0]}}</a></h2>
-											<ul class="post-meta h5">
-												<li>Age: {{infos[1]}}</li>
-												<li><a href="#">Blood Group: {{infos[2]}}</a></li><li><a href="#">Email: {{infos[5]}}</a></li>
-												<li><a href="#">Phone no: {{infos[6]}}</a></li>
-											</ul>
+											<div class="special-heading">
+												<h4>Patient Registration</h4>
+											</div>
+											
 										</div>
-										<div class="post-content">
-											<p>Issue: {{infos[9]}}</p>
+										<form action="register_patient" method = "POST">
+										<div class="post-content" style="color:black;">
+												<div class="text-center">{{message}}</div>
+											<p><div class="form-group row">
+												<label class="col-2 col-form-label" for="example-text-input">Name</label>
+												<div class="col-10">
+													<input class="form-control" type="text" name="name" >
+												</div>
+											</div></p>
+											<p>
+												<div class="form-group row">
+													<label class="col-2 col-form-label" for="example-number-input">Age</label>
+													<div class="col-10">
+														<input class="form-control" type="number" name="age">
+													</div>
+												</div>
+											</p>
+											<p>
+												<div class="form-group row">
+													<label class="col-2 col-form-label" for="example-number-input">Blood Group</label>
+													<div class="col-10">
+														<select class="form-control m-b-10" name="bloodgroup">
+															<option>O+</option>
+															<option>O-</option>
+															<option>A+</option>
+															<option>A-</option>
+															<option>B+</option>
+															<option>B-</option>
+															<option>AB+</option>
+															<option>AB-</option>
+														</select>
+													</div>
+												</div>
+											</p>
+											<p><div class="form-group row">
+												<label class="col-2 col-form-label" for="example-text-input" >Weight</label>
+												<div class="col-10">
+													<input class="form-control" type="number" name="weight" >
+												</div>
+											</div></p>
+											<p><div class="form-group row">
+												<label class="col-2 col-form-label" for="example-text-input" >Height</label>
+												<div class="col-10">
+													<input class="form-control" type="number" name="height" >
+												</div>
+											</div></p>
+											<p><div class="form-group row">
+												<label class="col-2 col-form-label" for="example-text-input" >Email</label>
+												<div class="col-10">
+													<input class="form-control" type="text" name="email" >
+												</div>
+											</div></p>
+											<p><div class="form-group row">
+												<label class="col-2 col-form-label" for="example-text-input">Gender</label>
+												<div class="col-10">
+														<select class="form-control m-b-10" name="gender">
+																<option>Male</option>
+																<option>Female</option>
+																<option>Other</option>
+																
+															</select>
+													
+												</div>
+											</div></p>
+											<p><div class="form-group row">
+													<label class="col-2 col-form-label" for="example-text-input" >Phone No.</label>
+													<div class="col-10">
+														<input class="form-control" type="text" name="phno" >
+													</div>
+												</div></p>
+												<p><div class="form-group row">
+														<label class="col-2 col-form-label" for="example-text-input" >Remarks</label>
+														<div class="col-10">
+															<input class="form-control" type="text" name="issue" >
+														</div>
+													</div></p>
 										</div>
-										
+										<div class = "text-center">
+										<button class="btn btn-round btn-brand" type="submit">Submit</button>
+									</div>
+									</form>
 									</div>
 								</article>
-								{% endfor %} 
 								<!-- Post end-->
 								<!-- Post-->
-			
+							
 								
 							</div>
 							<!-- Content end-->
@@ -143,8 +211,8 @@
 											<h5>Tools</h5>
 										</div>
 										<ul>
-											<li><a href="register_patient">Register a new Patient</a></li>
-											<li><a href="medicine_data">Enter Medicine Data</a></li>
+											<li><a href="#">Register a new Patient</a></li>
+											<li><a href="#">Enter Medicine Data</a></li>
 											<li><a href="#">Load Medicine</a></li>
 											<li><a href="#">Schedule an Appoinment</a></li>
 
