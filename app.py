@@ -159,6 +159,19 @@ def medicine_data():
 		message="Medicine Added to Database"
 		return render_template('medicine_data.html',message=message)
 	return render_template('medicine_data.html')
+@app.route('/auth',methods=['GET','POST'])						#Can only be accessed if logged in
+def auth():
+	if request.method == 'POST':
+		nurse = request.form['nurse']
+		patient = request.form['patient']
+		print(nurse,patient)
+		sql = "INSERT INTO rfid(nurse,patient) VALUES('%s','%s')"%(nurse,patient)
+		dbquery.inserttodb(sql)
+		return "200"
+	#usr=session['userno']	#Recieving the userid for db manipulation from the initilised session
+	sql="SELECT * FROM rfid "
+	info=dbquery.fetchall(sql)
+	return render_template('nurse_dash.html',info=info)
 
 @app.route('/', methods=['GET','POST'])
 def index():
