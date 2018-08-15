@@ -100,47 +100,47 @@
 							<!-- Content-->
 							<div class="col-lg-8 order-lg-2">
 									<div class="comments-area">
-											<h5 class="comments-title">Name</h5>
+											<h5 class="comments-title">{{datas[0][0]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Age: {{datas[0][1]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blood group: {{datas[0][2]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Phone: {{datas[0][6]}} </h5>
 											<div class="comment-list">
 												<!-- Comment-->
 												<div class="comment"></div></div></div>
-									<article class="post">
-											<h3 class="post-title"><a href="blog-single.html">Chest Xray</a></h3>
-											<div class="post-preview" style="width: 60%; margin-left: 20%"><img src="../static/assets/images/blog/1.jpg" alt=""></div>
-											
-											<div class="post-content">
-												<p>Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Seitan High Life reprehenderit consectetur cupidatat kogi about me. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth art party deep v chillwave. Seitan High Life reprehenderit consectetur cupidatat kogi.</p>
-											</div>
-											<div class="post-footer">
-												<div class="post-tags"><a href="#">Lifestyle</a><a href="#">Music</a><a href="#">News</a><a href="#">Travel</a></div>
-											</div>
-										</article>
+									
+										{% for data in posts %}
+										<article class="post">
+												<h3 class="post-title"><a href=""></a>{{data[1]}}</h3><br>
+												{% if data[3] != None %}
+												<div class="post-preview" style="width: 60%; margin-left: 20%"><img src="../static/uploads/{{data[0]}}/{{data[3]}}" alt="Image not found"></div>
+												{% endif %}
+												<div class="post-content">
+													<p>{{data[2]}}</p>
+												</div>
+												<div class="post-footer">
+													<a href="#">{{data[5]}}</a>
+												</div>
+											</article>
 										<!-- Post end-->
-		
+										{% endfor %} 
 										<!-- Comments area-->
 										<div class="comments-area">
-											<h5 class="comments-title">3 Comments</h5>
-											<div class="comment-list">
-												<!-- Comment-->
-												</div>
+											
 											<div class="comment-respond">
-												<h5 class="comment-reply-title">Leave a Reply</h5>
-												<p class="comment-notes">Your email address will not be published. Required fields are marked *</p>
-												<form class="comment-form row">
-													<div class="form-group col-sm-4">
-														<input class="form-control" type="text" placeholder="Name *">
+												<h5 class="comment-reply-title">Post an Update</h5>
+												<p class="comment-notes"></p>
+												<form class="comment-form row" method="POST" enctype="multipart/form-data">
+													<div class="form-group col-sm-12">
+														<input class="form-control" type="text" placeholder="Title" name ="title">
 													</div>
-													<div class="form-group col-sm-4">
-														<input class="form-control" type="text" placeholder="Email *">
-													</div>
-													<div class="form-group col-sm-4">
-														<input class="form-control" type="url" placeholder="Website">
+													
+													
+													<div class="form-group col-sm-12">
+														<textarea class="form-control" rows="8" placeholder="Remarks *" name="remark"></textarea>
 													</div>
 													<div class="form-group col-sm-12">
-														<textarea class="form-control" rows="8" placeholder="Comment *"></textarea>
-													</div>
+															<input class="form-control" type="file" placeholder="Upload a file" name = "file">
+														</div>
+													
 													<div class="form-submit col-sm-12">
-														<input class="btn btn-round btn-brand" type="submit" value="Post Comment">
+														<input class="btn btn-round btn-brand" type="submit" value="Post Update">
 													</div>
 												</form>
 											</div>

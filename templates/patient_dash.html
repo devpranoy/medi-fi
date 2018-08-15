@@ -49,7 +49,11 @@
 									</li>
 									<!-- Pages end-->
 									<!-- Portfolio-->
-									<li class="menu-item"><a href="#">Doctors</a>
+									<li class="menu-item"><a href="#">Patients</a>
+
+										
+									</li>
+									<li class="menu-item"><a href="#">Medi-Bot</a>
 
 										
 									</li>
@@ -95,42 +99,55 @@
 						<div class="row">
 							<!-- Content-->
 							<div class="col-lg-8 order-lg-2">
-
-								<!-- Post-->
-								<article class="post">
-									<div class="post-wrapper">
-										<div class="post-header">
-											<h2 class="post-title"><a href="blog-single.html">Improvement in Health</a></h2>
-											<ul class="post-meta h5">
-												<li>November 18, 2016</li>
-												<li><a href="#">Branding</a>, <a href="#">Design</a></li>
-												<li><a href="#">3 Comments</a></li>
-											</ul>
-										</div>
-										<div class="post-content">
-											<p>He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.</p>
-										</div>
-										
+									<div class="comments-area">
+											<h5 class="comments-title">{{datas[0][0]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Age: {{datas[0][1]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Blood group: {{datas[0][2]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Phone: {{datas[0][6]}} </h5>
+											<div class="comment-list">
+												<!-- Comment-->
+												<div class="comment"></div></div></div>
+									
+										{% for data in posts %}
+										<article class="post">
+												<h3 class="post-title"><a href=""></a>{{data[1]}}</h3><br>
+												{% if data[3] != None %}
+												<div class="post-preview" style="width: 60%; margin-left: 20%"><img src="../static/uploads/{{data[0]}}/{{data[3]}}" alt="Image not found"></div>
+												{% endif %}
+												<div class="post-content">
+													<p>{{data[2]}}</p>
+												</div>
+												<div class="post-footer">
+													<div class="post-tags"><a href="#">Pnuemonia</a><a href="#">Mass</a><a href="#">Effusion</a><a href="#">Bronchiosis</a></div>
+												</div>
+											</article>
+										<!-- Post end-->
+										{% endfor %} 
+										<!-- Comments area-->
+										<div class="comments-area">
+											
+											<div class="comment-respond">
+												<h5 class="comment-reply-title">Post an Update</h5>
+												<p class="comment-notes"></p>
+												<form class="comment-form row" method="POST" enctype="multipart/form-data">
+													<div class="form-group col-sm-12">
+														<input class="form-control" type="text" placeholder="Title" name ="title">
+													</div>
+													
+													
+													<div class="form-group col-sm-12">
+														<textarea class="form-control" rows="8" placeholder="Remarks *" name="remark"></textarea>
+													</div>
+													<div class="form-group col-sm-12">
+															<input class="form-control" type="file" placeholder="Upload a file" name = "file">
+														</div>
+													
+													<div class="form-submit col-sm-12">
+														<input class="btn btn-round btn-brand" type="submit" value="Post Update">
+													</div>
+												</form>
+											</div>
+									
+										<!-- Comments area end-->
 									</div>
-								</article>
-								<!-- Post end-->
-								<!-- Post-->
-								<article class="post">
-									<div class="post-wrapper">
-										<div class="post-header">
-											<h2 class="post-title"><a href="blog-single.html">Improvement in Health</a></h2>
-											<ul class="post-meta h5">
-												<li>November 18, 2016</li>
-												<li><a href="#">Branding</a>, <a href="#">Design</a></li>
-												<li><a href="#">3 Comments</a></li>
-											</ul>
-										</div>
-										<div class="post-content">
-											<p>He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.</p>
-										</div>
-										
-									</div>
-								</article>
+			
 								
 							</div>
 							<!-- Content end-->
@@ -147,10 +164,8 @@
 											<h5>Tools</h5>
 										</div>
 										<ul>
-								
-											<li><a href="#">Schedule an Appoinment</a></li>
-											<li><a href="#">View Previous Prescriptions</a></li>
-											<li><a href="#">View Test Results</a></li>
+											<li><a href="appointment_patient">Schedule an Appointment</a></li>
+											
 
 										</ul>
 									</aside>
@@ -237,7 +252,13 @@
 							<li class="menu-item"><a href="#">Shortcodes</a></li>
 						</ul>
 					</aside>
-					
+					<ul class="social-icons">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-vk"></i></a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -255,5 +276,6 @@
 
 	
 	</body>
+
 
 </html>

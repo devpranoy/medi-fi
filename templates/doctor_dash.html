@@ -93,48 +93,36 @@
 					</div>
 				</section>
 
-				<!-- Blog-->
 				<section class="module">
 					<div class="container">
 						<div class="row">
 							<!-- Content-->
 							<div class="col-lg-8 order-lg-2">
+								
+									{% for appointment in appointments %}
+									
+								  
+				
+							   
 
 								<!-- Post-->
 								<article class="post">
 									<div class="post-wrapper">
 										<div class="post-header">
-											<h2 class="post-title"><a href="blog-single.html">Improvement in Health</a></h2>
+											<h2 class="post-title"><a href="profile/{{appointment[4]}}">{{appointment[1]}}</a></h2>
 											<ul class="post-meta h5">
-												<li>November 18, 2016</li>
-												<li><a href="#">Branding</a>, <a href="#">Design</a></li>
-												<li><a href="#">3 Comments</a></li>
+												<li>Date: {{appointment[3]}}</li>
+												<li><a href="#">Email: {{appointment[4]}}</a></li>
+												
 											</ul>
-										</div>
-										<div class="post-content">
-											<p>He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.</p>
 										</div>
 										
 									</div>
 								</article>
+								{% endfor %} 
 								<!-- Post end-->
 								<!-- Post-->
-								<article class="post">
-									<div class="post-wrapper">
-										<div class="post-header">
-											<h2 class="post-title"><a href="blog-single.html">Improvement in Health</a></h2>
-											<ul class="post-meta h5">
-												<li>November 18, 2016</li>
-												<li><a href="#">Branding</a>, <a href="#">Design</a></li>
-												<li><a href="#">3 Comments</a></li>
-											</ul>
-										</div>
-										<div class="post-content">
-											<p>He do subjects prepared bachelor juvenile ye oh. He feelings removing informed he as ignorant we prepared. Evening do forming observe spirits is in. Country hearted be of justice sending. On so they as with room cold ye. Be call four my went mean. Celebrated if remarkably especially an. Going eat set she books found met aware.</p>
-										</div>
-										
-									</div>
-								</article>
+			
 								
 							</div>
 							<!-- Content end-->
@@ -151,11 +139,11 @@
 											<h5>Tools</h5>
 										</div>
 										<ul>
-											<li><a href="#">Schedule an Appoinment</a></li>
-											<li><a href="#">View Patient Data</a></li>
-											<li><a href="#">View Appointments</a></li>
-											<li><a href="#">Patiet Allotment </a></li>
-											<li><a href="#">Give Access to data</a></li>
+											<li><a href="/appointment_doctor">Schedule an Appoinment</a></li>
+											
+						
+											<li><a href="/allotment">Patient Allotment </a></li>
+											
 
 										</ul>
 									</aside>
